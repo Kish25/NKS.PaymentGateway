@@ -43,6 +43,9 @@ namespace NKS.PaymentGateway.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NKS.PaymentGateway.API v1"));
             }
+            var swaggerConfig = Configuration.GetSection("SwaggerConfiguration").Get<Swagger>();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint($"/swagger/v{swaggerConfig.Version}/swagger.json", "API v1"));
 
             app.UseHttpsRedirection();
 
