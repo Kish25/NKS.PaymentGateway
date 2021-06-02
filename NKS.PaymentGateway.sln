@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKS.PaymentGateway.API", "NKS.PaymentGateway.API\NKS.PaymentGateway.API.csproj", "{9526B49C-2DB7-4ED3-B4C6-CC9665418FC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NKS.PaymentGateway.API", "NKS.PaymentGateway.API\NKS.PaymentGateway.API.csproj", "{9526B49C-2DB7-4ED3-B4C6-CC9665418FC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DCED530B-6FAD-4CE3-8BB2-7317559A2090}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKS.PaymentGateway.Core", "NKS.PaymentGateway.Core\NKS.PaymentGateway.Core.csproj", "{C1EB39F5-FA0E-41AC-B0DE-A4E0DBDBDE08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKS.PaymentGateway.infrastructure", "NKS.PaymentGateway.infrastructure\NKS.PaymentGateway.infrastructure.csproj", "{3FC6FC11-0293-48D8-A5DB-EA42E86EE4F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,14 @@ Global
 		{9526B49C-2DB7-4ED3-B4C6-CC9665418FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9526B49C-2DB7-4ED3-B4C6-CC9665418FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9526B49C-2DB7-4ED3-B4C6-CC9665418FC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1EB39F5-FA0E-41AC-B0DE-A4E0DBDBDE08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1EB39F5-FA0E-41AC-B0DE-A4E0DBDBDE08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1EB39F5-FA0E-41AC-B0DE-A4E0DBDBDE08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1EB39F5-FA0E-41AC-B0DE-A4E0DBDBDE08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FC6FC11-0293-48D8-A5DB-EA42E86EE4F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FC6FC11-0293-48D8-A5DB-EA42E86EE4F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FC6FC11-0293-48D8-A5DB-EA42E86EE4F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FC6FC11-0293-48D8-A5DB-EA42E86EE4F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
