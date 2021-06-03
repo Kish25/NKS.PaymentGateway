@@ -8,11 +8,7 @@ namespace NKS.PaymentGateway.Core.Entities
 {
     public class PaymentRequest
     {
-        public string CardHolderName { get; set; }
-        public string CardNumber { get; set; }
-        public int ExpiryMonth { get; set; }
-        public int ExpiryYear { get; set; }
-        public int CVV { get; set; }
+        public CardDetails CardDetails { get; set; }
         public string Currency { get; set; }
         public decimal Amount { get; set; }
     }

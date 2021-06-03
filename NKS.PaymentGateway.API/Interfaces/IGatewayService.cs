@@ -8,7 +8,7 @@ namespace NKS.PaymentGateway.API.Interfaces
 {
     public interface IGatewayService
     {
-        Task<Payment> GetBy(string reference);
+        Task<Payment> GetBy(Guid id);
         Task<Payment> ProcessAsync(PaymentRequest paymentRequest);
     }
 }
