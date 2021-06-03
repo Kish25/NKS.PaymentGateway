@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace NKS.PaymentGateway.API.Contracts
+﻿namespace NKS.Payments.API.Contracts
 {
+    /// <summary>
+    /// minimal contract defined to process payment request.
+    /// </summary>
     public class PaymentProcessRequest
     {
         //-- to paymentdetails

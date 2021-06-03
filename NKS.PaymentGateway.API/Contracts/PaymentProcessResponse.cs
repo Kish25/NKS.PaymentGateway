@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace NKS.PaymentGateway.API.Contracts
+﻿namespace NKS.Payments.API.Contracts
 {
+    using System;
+
+    /// <summary>
+    /// Resopnse after processing payment request
+    /// Status is either Success or Fail and reference for internal storage of payment.
+    ///
+    /// there could be various status - begin with two.
+    /// </summary>
     public class PaymentProcessResponse
     {
         public Guid GatewayReference { get; set; }

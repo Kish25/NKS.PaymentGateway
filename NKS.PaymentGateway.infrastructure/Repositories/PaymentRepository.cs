@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NKS.PaymentGateway.Core.Entities;
-using NKS.PaymentGateway.Core.Interfaces;
+using NKS.Payments.Core.Entities;
+using NKS.Payments.Core.Interfaces;
 
-namespace NKS.PaymentGateway.infrastructure.Repositories
+namespace NKS.Payments.Infrastructure.Repositories
 {
     public class PaymentRepository : IPaymentRepository
     {

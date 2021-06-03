@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NKS.PaymentGateway.Core.Entities
+namespace NKS.Payments.Core.Entities
 {
     public class PaymentRequest
     {

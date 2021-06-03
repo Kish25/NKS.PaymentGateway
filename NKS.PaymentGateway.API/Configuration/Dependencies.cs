@@ -1,7 +1,4 @@
-﻿using NKS.PaymentGateway.API.Interfaces;
-using NKS.PaymentGateway.API.Services;
-
-namespace NKS.PaymentGateway.API.Configuration
+﻿namespace NKS.Payments.API.Configuration
 {
     using System;
     using System.IO;
@@ -9,20 +6,24 @@ namespace NKS.PaymentGateway.API.Configuration
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.OpenApi.Models;
+    using NKS.Payments.API.Interfaces;
+    using NKS.Payments.API.Services;
     public static class Dependencies
     {
+        /// <summary>
+        /// Extension method to register dependencies local to project
+        /// and out of startup class to leave it clean.
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="config"></param>
+        /// <returns>Service Collection Object</returns>
         public static IServiceCollection AddAPIConfiguration(this IServiceCollection services,IConfiguration config)
         {
             
             var swaggerConfig = config.GetSection("SwaggerConfiguration").Get<Swagger>();
-            
-            services
-                .AddMvcCore()
-                .AddMvcOptions(options =>
-                {
-                    //options.Filters.Add<UnitOfWork>(1);
-                    //options.Filters.Add<LogRequestTimeFilterAttribute>();
-                });
+
+            services.AddMvcCore();
+                
 
             services.AddSwaggerGen(options =>
             {
@@ -39,7 +40,7 @@ namespace NKS.PaymentGateway.API.Configuration
                 });
                 options.EnableAnnotations();
             });
-            services.AddTransient<IGatewayService,GatewayService>();
+            services.AddTransient<IPaymentService,PaymentService>();
             return services;
         }
     }

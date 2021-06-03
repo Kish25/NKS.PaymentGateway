@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NKS.PaymentGateway.Core.Entities;
-
-namespace NKS.PaymentGateway.Core.Interfaces
+﻿namespace NKS.Payments.Core.Interfaces
 {
+    using NKS.Payments.Core.Entities;
+    using System;
+
     public interface IPaymentRepository
     {
         void GetBy(Guid reference);

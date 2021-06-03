@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NKS.PaymentGateway.Core.Exceptions
+namespace NKS.Payments.Core.Exceptions
 {
     public class CardValidationException : Exception
     {

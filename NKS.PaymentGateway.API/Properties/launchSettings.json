@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "NKS.PaymentGateway.API": {
+    "NKS.Payments.API": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

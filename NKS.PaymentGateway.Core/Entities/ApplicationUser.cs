@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NKS.PaymentGateway.Core.Entities
+﻿namespace NKS.Payments.Core.Entities
 {
+    using System;
+
     public class ApplicationUser
     {
         public Guid Id { get; set; }

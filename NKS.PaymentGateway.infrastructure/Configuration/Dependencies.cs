@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using NKS.PaymentGateway.Core.Interfaces;
-using NKS.PaymentGateway.infrastructure.Repositories;
-
-namespace NKS.PaymentGateway.infrastructure.Configuration
+﻿namespace NKS.Payments.Infrastructure.Configuration
 {
+    using Microsoft.Extensions.DependencyInjection;
+    using Core.Interfaces;
+    using Repositories;
+
+    /// <summary>
+    /// Extension method to register dependencies local to project
+    /// and out of startup class to leave it clean.
+    /// </summary>
+    /// <param name="services"></param>
+    /// <returns>Service Collection Object</returns>
+
     public static class Dependencies
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)

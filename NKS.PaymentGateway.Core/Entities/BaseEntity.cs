@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NKS.PaymentGateway.Core.Interfaces;
-
-namespace NKS.PaymentGateway.Core.Entities
+﻿namespace NKS.Payments.Core.Entities
 {
+    using Interfaces;
+    using System;
+    using System.Collections.Generic;
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class BaseEntity : IEquatable<BaseEntity>, IObjectState
     {
         private readonly List<Rule> _brokenRules = new List<Rule>();
@@ -27,13 +26,17 @@ namespace NKS.PaymentGateway.Core.Entities
 
         public void SetModified()
         {
-            if (Status == ObjectState.Unchanged)
-                Status = ObjectState.Modified;
+            if (State == ObjectState.Unchanged)
+                State = ObjectState.Modified;
         }
 
         public void SetDeleted()
         {
-            Status = ObjectState.Deleted;
+            State = ObjectState.Deleted;
+        }
+        public override int GetHashCode()
+        {
+            return (Actual.GetType().ToString() + Id).GetHashCode();
         }
         protected void AddBrokenRule(Rule businessRule)
         {

@@ -1,4 +1,4 @@
-﻿namespace NKS.PaymentGateway.Core.Entities
+﻿namespace NKS.Payments.Core.Entities
 {
     public class CardDetails
     {

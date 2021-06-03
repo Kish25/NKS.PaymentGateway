@@ -1,8 +1,8 @@
-﻿namespace NKS.PaymentGateway.Core.Interfaces
+﻿namespace NKS.Payments.Core.Interfaces
 {
     public interface IObjectState
     {
-        ObjectState Status { get; }
+        ObjectState State { get; }
 
     }
 }

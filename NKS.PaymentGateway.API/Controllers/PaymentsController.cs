@@ -1,29 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NKS.PaymentGateway.API.Contracts;
-using NKS.PaymentGateway.API.Interfaces;
-using NKS.PaymentGateway.API.Models;
-using NKS.PaymentGateway.Core.Exceptions;
-using Serilog;
+﻿// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace NKS.PaymentGateway.API.Controllers
+namespace NKS.Payments.API.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Contracts;
+    using Interfaces;
+    using Core.Exceptions;
+    using Serilog;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
     /// <summary>
-    /// 
+    /// Payments 
     /// </summary>
     [Route("[controller]")]
     [ApiController]
-    public class GatewayController : ControllerBase
+    public class PaymentsController : ControllerBase
     {
-        private readonly IGatewayService _gatewayService;
+        private readonly IPaymentService _gatewayService;
         private readonly IPaymentMapper _mapper;
 
-        public GatewayController(IGatewayService gatewayService, IPaymentMapper mapper)
+        public PaymentsController(IPaymentService gatewayService, IPaymentMapper mapper)
         {
             _gatewayService = gatewayService;
             _mapper = mapper;
@@ -44,34 +42,27 @@ namespace NKS.PaymentGateway.API.Controllers
             if (gatewayResponse == null)
             return NotFound("Reference is not identified.");
 
-            var response = _mapper.MaptoDetails(gatewayResponse);
+            var response = _mapper.ToPaymentDetailsDto(gatewayResponse);
 
             return Ok(response);
-            return new PaymentDTO();
+          
         }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] PaymentProcessRequest request)
         {
             // map to domain object
-            _mapper.MaptoDomain(request);
+            var mappedEntity = _mapper.ToDomainEntity(request);
             try
             {
-                _gatewayService.ProcessAsync(request);
+                var result = await _gatewayService.ProcessAsync(mappedEntity);
 
-                return Ok(_mapper.MaptoDto());
+                return Ok(_mapper.ToPaymentProcessResponse(result));
             }
             catch (CardValidationException e)
             {
                 return BadRequest(e.Message);
             }
-
-            
-            //process
-            // map to dto 
-
-
-            return new PaymentProcessResponse();
         }
     }
 }
