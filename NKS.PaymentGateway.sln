@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NKS.PaymentGateway.API", "NKS.PaymentGateway.API\NKS.PaymentGateway.API.csproj", "{9526B49C-2DB7-4ED3-B4C6-CC9665418FC9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C1EB39F5-FA0E-41AC-B0DE-A4E0DBDBDE08} = {C1EB39F5-FA0E-41AC-B0DE-A4E0DBDBDE08}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DCED530B-6FAD-4CE3-8BB2-7317559A2090}"
 EndProject

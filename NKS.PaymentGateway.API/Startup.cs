@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NKS.PaymentGateway.API.Configuration;
+using Serilog;
 
 namespace NKS.PaymentGateway.API
 {
@@ -26,12 +28,10 @@ namespace NKS.PaymentGateway.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "NKS.PaymentGateway.API", Version = "v1" });
-            });
+            Log.Information("Configuring services.");
+          //  services.Configure<Swagger>(Configuration.GetSection("SwaggerConfiguration"));
+          services.AddControllers(); 
+          services.AddAPIConfiguration(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +43,9 @@ namespace NKS.PaymentGateway.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NKS.PaymentGateway.API v1"));
             }
+            var swaggerConfig = Configuration.GetSection("SwaggerConfiguration").Get<Swagger>();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint($"/swagger/v{swaggerConfig.Version}/swagger.json", "API v1"));
 
             app.UseHttpsRedirection();
 
