@@ -21,11 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Contracts\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\NKS.PaymentGateway.Core\NKS.PaymentGateway.Core.csproj" />
     <ProjectReference Include="..\NKS.PaymentGateway.infrastructure\NKS.PaymentGateway.infrastructure.csproj" />
   </ItemGroup>

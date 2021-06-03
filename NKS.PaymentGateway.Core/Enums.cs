@@ -16,4 +16,11 @@ namespace NKS.PaymentGateway.Core
         Deleted = 5,
         ModifiedRequiresApproval = 6
     }
+
+    public enum PaymentStatus
+    {
+        NotKnown = 0,
+        Approved = 1,
+        Declined = 2
+    }
 }

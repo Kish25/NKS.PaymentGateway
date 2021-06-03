@@ -8,20 +8,21 @@ namespace NKS.PaymentGateway.Core.Entities
 {
     public class Payment : BaseEntity
     {
-        public Payment()
+        public Payment(Guid id) : base(id)
         {
-            
+
         }
-        public DateTime ProcessedDate { get; set; }
-        public string CustomerReference { get; set; }
-        public string BinNumber { get; set; }
+        public DateTime BankSubmissionDate { get; set; }
+
+        public string CardNumber { get; set; }
         public int ExpiryMonth { get; set; }
         public int ExpiryYear { get; set; }
-        public int CVV { get; set; }
+        public string Cardtype { get; set; }
         public string Currency { get; set; }
         public decimal Amount { get; set; }
         public int UserId { get; set; }
-        public string BankStatus { get; set; }
+        public DateTime BankProcessDate { get; set; }
+        public PaymentStatus Status { get; set; }
         public string BankReference { get; set; }
 
         protected override void Validate()

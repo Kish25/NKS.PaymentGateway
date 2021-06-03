@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NKS.PaymentGateway.API.Configuration;
+using NKS.PaymentGateway.infrastructure.Configuration;
 using Serilog;
 
 namespace NKS.PaymentGateway.API
@@ -32,6 +33,8 @@ namespace NKS.PaymentGateway.API
           //  services.Configure<Swagger>(Configuration.GetSection("SwaggerConfiguration"));
           services.AddControllers(); 
           services.AddAPIConfiguration(Configuration);
+          services.AddInfrastructure();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

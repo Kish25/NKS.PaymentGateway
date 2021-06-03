@@ -10,6 +10,9 @@
   <ItemGroup>
     <ProjectReference Include="..\NKS.PaymentGateway.Core\NKS.PaymentGateway.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="APIs\" />
+  </ItemGroup>
 
 
 </Project>

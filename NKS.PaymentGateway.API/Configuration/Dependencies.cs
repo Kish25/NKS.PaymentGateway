@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
+﻿using NKS.PaymentGateway.API.Interfaces;
+using NKS.PaymentGateway.API.Services;
 
 namespace NKS.PaymentGateway.API.Configuration
 {
+    using System;
+    using System.IO;
+    using System.Reflection;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.OpenApi.Models;
     public static class Dependencies
     {
         public static IServiceCollection AddAPIConfiguration(this IServiceCollection services,IConfiguration config)
@@ -41,6 +39,7 @@ namespace NKS.PaymentGateway.API.Configuration
                 });
                 options.EnableAnnotations();
             });
+            services.AddTransient<IGatewayService,GatewayService>();
             return services;
         }
     }
