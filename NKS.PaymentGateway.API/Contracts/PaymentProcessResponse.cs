@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// Resopnse after processing payment request
+    /// Response after processing payment request
     /// Status is either Success or Fail and reference for internal storage of payment.
     ///
     /// there could be various status - begin with two.

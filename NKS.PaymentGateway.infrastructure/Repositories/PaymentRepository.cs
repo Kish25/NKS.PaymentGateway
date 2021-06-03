@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NKS.Payments.Core.Entities;
-using NKS.Payments.Core.Interfaces;
-
+﻿
 namespace NKS.Payments.Infrastructure.Repositories
 {
+    using Core.Entities;
+    using Core.Interfaces;
+    using System;
+
     public class PaymentRepository : IPaymentRepository
     {
         public void Create(Payment Payment)

@@ -1,6 +1,6 @@
 ﻿namespace NKS.Payments.Core.Interfaces
 {
-    using NKS.Payments.Core.Entities;
+    using Entities;
     using System;
 
     public interface IPaymentRepository

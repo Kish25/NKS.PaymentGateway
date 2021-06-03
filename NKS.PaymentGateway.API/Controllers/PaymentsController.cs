@@ -11,9 +11,6 @@ namespace NKS.Payments.API.Controllers
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    /// <summary>
-    /// Payments 
-    /// </summary>
     [Route("[controller]")]
     [ApiController]
     public class PaymentsController : ControllerBase

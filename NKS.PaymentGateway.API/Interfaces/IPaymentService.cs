@@ -6,9 +6,6 @@ using NKS.Payments.Core.Entities;
 
 namespace NKS.Payments.API.Interfaces
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public interface IPaymentService
     {
         Task<Payment> GetBy(Guid paymentReference);

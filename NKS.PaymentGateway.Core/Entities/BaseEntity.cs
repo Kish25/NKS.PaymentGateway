@@ -3,9 +3,6 @@
     using Interfaces;
     using System;
     using System.Collections.Generic;
-    /// <summary>
-    /// 
-    /// </summary>
     public abstract class BaseEntity : IEquatable<BaseEntity>, IObjectState
     {
         private readonly List<Rule> _brokenRules = new List<Rule>();

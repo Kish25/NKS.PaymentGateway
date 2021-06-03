@@ -4,9 +4,6 @@
     using Interfaces;
     using Core.Entities;
 
-    /// <summary>
-    /// 
-    /// </summary>
     public class PaymentMapper : IPaymentMapper
     {
         public PaymentRequest ToDomainEntity(PaymentProcessRequest request)
