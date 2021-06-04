@@ -1,5 +1,5 @@
  //https://dejanstojanovic.net/aspnet/2020/july/basic-authentication-with-swagger-and-aspnet-core/
-namespace NKS.PaymentGateway.API
+namespace NKS.Payments.API
 {
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;

@@ -1,40 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NKS.PaymentGateway.Core.Interfaces;
-
-namespace NKS.PaymentGateway.Core.Entities
+﻿namespace NKS.Payments.Core.Entities
 {
+    using Interfaces;
+    using System;
+    using System.Collections.Generic;
     public abstract class BaseEntity : IEquatable<BaseEntity>, IObjectState
     {
         private readonly List<Rule> _brokenRules = new List<Rule>();
 
-        public Guid EntityId { get; set; }
-        protected virtual long Id { get; set; }    //reference : https://enterprisecraftsmanship.com/posts/entity-base-class/
+        public BaseEntity(Guid id)
+        {
+            Id = id;
+        }
+        public BaseEntity()
+        {
+
+        }
+        public Guid Id { get; set; }
+
         protected virtual object Actual => this;
-        public ObjectState Status { get; set; }
+        public ObjectState State { get; set; }
         public bool IsActive => true;
 
-        protected BaseEntity()
-        {
-
-        }
-
-        protected BaseEntity(Guid entityId)
-        {
-            EntityId = entityId;
-        }
         public void SetModified()
         {
-            if (Status == ObjectState.Unchanged)
-                Status = ObjectState.Modified;
+            if (State == ObjectState.Unchanged)
+                State = ObjectState.Modified;
         }
 
         public void SetDeleted()
         {
-            Status = ObjectState.Deleted;
+            State = ObjectState.Deleted;
+        }
+        public override int GetHashCode()
+        {
+            return (Actual.GetType().ToString() + Id).GetHashCode();
         }
         protected void AddBrokenRule(Rule businessRule)
         {
@@ -70,11 +69,6 @@ namespace NKS.PaymentGateway.Core.Entities
             return !(a == b);
         }
 
-        public override int GetHashCode()
-        {
-            return (Actual.GetType().ToString() + Id).GetHashCode();
-        }
-
         public bool Equals(BaseEntity other)
         {
             if (other is null)
@@ -86,7 +80,7 @@ namespace NKS.PaymentGateway.Core.Entities
             if (Actual.GetType() != other.Actual.GetType())
                 return false;
 
-            if (Id == 0 || other.Id == 0)
+            if (Id == Guid.Empty || other.Id == Guid.Empty)
                 return false;
 
             return Id == other.Id;

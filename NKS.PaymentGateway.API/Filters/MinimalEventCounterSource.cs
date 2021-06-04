@@ -1,7 +1,9 @@
-﻿namespace NKS.PaymentGateway.API.Filters
+﻿namespace NKS.Payments.API.Filters
 {
     using System.Diagnostics.Tracing;
-
+    /// <summary>
+    /// Performance counters for testing.
+    /// </summary>
     [EventSource(Name = "Sample.EventCounter.Minimal")]
     public sealed class MinimalEventCounterSource : EventSource
     {

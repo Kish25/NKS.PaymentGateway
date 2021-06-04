@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace NKS.PaymentGateway.API.Configuration
+﻿namespace NKS.Payments.API.Configuration
 {
+    /// <summary>
+    /// Swagger configuration 
+    /// </summary>
     public class Swagger
     {
         public string Name { get; set; }

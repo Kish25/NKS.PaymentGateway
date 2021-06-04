@@ -1,27 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NKS.PaymentGateway.Core.Entities
+﻿namespace NKS.Payments.Core.Entities
 {
+    using System;
+    /// <summary>
+    /// Core domain entity for payment processing.
+    /// </summary>
     public class Payment : BaseEntity
     {
         public Payment()
         {
             
         }
-        public DateTime ProcessedDate { get; set; }
-        public string CustomerReference { get; set; }
-        public string BinNumber { get; set; }
-        public int ExpiryMonth { get; set; }
-        public int ExpiryYear { get; set; }
-        public int CVV { get; set; }
+        public Payment(Guid id) : base(id)
+        {
+
+        }
+
+        public DateTime BankSubmissionDate { get; set; }
+        public CardDetails CardDetails { get; set; }
         public string Currency { get; set; }
         public decimal Amount { get; set; }
-        public int UserId { get; set; }
-        public string BankStatus { get; set; }
+        // UserId: only for reference purpose, possibly Guid/email/customer login id and based auth of registered user/company.
+        public int UserId { get; set; }     
+        public DateTime BankProcessDate { get; set; }
+        public PaymentStatus Status { get; set; }
         public string BankReference { get; set; }
 
         protected override void Validate()

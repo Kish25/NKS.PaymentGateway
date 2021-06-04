@@ -3,20 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NKS.PaymentGateway.API", "NKS.PaymentGateway.API\NKS.PaymentGateway.API.csproj", "{9526B49C-2DB7-4ED3-B4C6-CC9665418FC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NKS.Payments.API", "NKS.PaymentGateway.API\NKS.Payments.API.csproj", "{9526B49C-2DB7-4ED3-B4C6-CC9665418FC9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C1EB39F5-FA0E-41AC-B0DE-A4E0DBDBDE08} = {C1EB39F5-FA0E-41AC-B0DE-A4E0DBDBDE08}
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DCED530B-6FAD-4CE3-8BB2-7317559A2090}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKS.PaymentGateway.Core", "NKS.PaymentGateway.Core\NKS.PaymentGateway.Core.csproj", "{C1EB39F5-FA0E-41AC-B0DE-A4E0DBDBDE08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NKS.Payments.Core", "NKS.PaymentGateway.Core\NKS.Payments.Core.csproj", "{C1EB39F5-FA0E-41AC-B0DE-A4E0DBDBDE08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKS.PaymentGateway.infrastructure", "NKS.PaymentGateway.infrastructure\NKS.PaymentGateway.infrastructure.csproj", "{3FC6FC11-0293-48D8-A5DB-EA42E86EE4F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NKS.Payments.Infrastructure", "NKS.PaymentGateway.infrastructure\NKS.Payments.Infrastructure.csproj", "{3FC6FC11-0293-48D8-A5DB-EA42E86EE4F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKS.PatmentGateway.UnitTests", "NKS.PatmentGateway.UnitTests\NKS.PatmentGateway.UnitTests.csproj", "{BE023709-295B-49BD-B22B-95D40C8971A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NKS.PatmentGateway.UnitTests", "NKS.PatmentGateway.UnitTests\NKS.PatmentGateway.UnitTests.csproj", "{BE023709-295B-49BD-B22B-95D40C8971A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKS.PatmentGateway.IntegrationTests", "NKS.PatmentGateway.IntegrationTests\NKS.PatmentGateway.IntegrationTests.csproj", "{D8DFC071-DB7A-4D82-9F4A-A3A42D560371}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NKS.PatmentGateway.IntegrationTests", "NKS.PatmentGateway.IntegrationTests\NKS.PatmentGateway.IntegrationTests.csproj", "{D8DFC071-DB7A-4D82-9F4A-A3A42D560371}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

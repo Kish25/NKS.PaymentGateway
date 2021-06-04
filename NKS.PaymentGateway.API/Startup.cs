@@ -1,21 +1,14 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NKS.PaymentGateway.API.Configuration;
-using Serilog;
-
-namespace NKS.PaymentGateway.API
+namespace NKS.Payments.API
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+    using Configuration;
+    using NKS.Payments.Infrastructure.Configuration;
+    using Serilog;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -23,7 +16,7 @@ namespace NKS.PaymentGateway.API
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -32,18 +25,21 @@ namespace NKS.PaymentGateway.API
           //  services.Configure<Swagger>(Configuration.GetSection("SwaggerConfiguration"));
           services.AddControllers(); 
           services.AddAPIConfiguration(Configuration);
+          services.AddInfrastructure();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var swaggerConfig = Configuration.GetSection("SwaggerConfiguration").Get<Swagger>();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NKS.PaymentGateway.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NKS.Payments.API v1"));
             }
-            var swaggerConfig = Configuration.GetSection("SwaggerConfiguration").Get<Swagger>();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint($"/swagger/v{swaggerConfig.Version}/swagger.json", "API v1"));
 
