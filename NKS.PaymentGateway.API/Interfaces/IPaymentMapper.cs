@@ -9,7 +9,6 @@
     public interface IPaymentMapper
     {
         PaymentRequest ToDomainEntity(PaymentProcessRequest request);
-
         PaymentDTO ToPaymentDetailsDto(Payment payment);
         PaymentProcessResponse ToPaymentProcessResponse(Payment payment);
     }

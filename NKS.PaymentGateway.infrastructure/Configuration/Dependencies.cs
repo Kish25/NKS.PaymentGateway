@@ -1,7 +1,8 @@
 ﻿namespace NKS.Payments.Infrastructure.Configuration
 {
-    using Microsoft.Extensions.DependencyInjection;
+    using APIs;
     using Core.Interfaces;
+    using Microsoft.Extensions.DependencyInjection;
     using Repositories;
 
     /// <summary>
@@ -16,6 +17,7 @@
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             return services
+                   .AddTransient<IPaymentsAPI, PaymentsApi>()
                    .AddTransient<ICalendar, Calendar>()
                    .AddTransient<IPaymentRepository, PaymentRepository>();
         }

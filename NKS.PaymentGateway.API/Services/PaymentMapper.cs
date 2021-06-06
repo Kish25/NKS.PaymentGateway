@@ -18,7 +18,7 @@
                     CardNumber =request.CardNumber,
                     ExpiryMonth = request.ExpiryMonth,
                     ExpiryYear = request.ExpiryYear,
-                    Cvv=request.CVV
+                    Cvv=request.Cvv
                 }
             };
         }
@@ -47,7 +47,7 @@
         {
             return new PaymentProcessResponse()
             {
-                GatewayReference=payment.Id,
+                GatewayReference=payment.Id.ToString(),
                 Status = payment.Status.ToString()
             };
         }

@@ -1,10 +1,8 @@
-﻿
-namespace NKS.Payments.Infrastructure.APIs
+﻿namespace NKS.Payments.Infrastructure.APIs
 {
-    using System;
-    using System.Threading.Tasks;
     using Core.Entities;
     using Microsoft.Extensions.Options;
+    using System;
 
     public class FakeResultProvider: IFakeResultProvider
     {

@@ -1,5 +1,4 @@
-﻿
-namespace NKS.Payments.API.Interfaces
+﻿namespace NKS.Payments.API.Interfaces
 {
     using Core.Entities;
     using System;
