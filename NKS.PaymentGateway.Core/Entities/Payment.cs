@@ -8,22 +8,21 @@
     {
         public Payment()
         {
-            
+
         }
         public Payment(Guid id) : base(id)
         {
 
         }
 
-        public DateTime BankSubmissionDate { get; set; }
-        public CardDetails CardDetails { get; set; }
-        public string Currency { get; set; }
-        public decimal Amount { get; set; }
-        // UserId: only for reference purpose, possibly Guid/email/customer login id and based auth of registered user/company.
-        public int UserId { get; set; }     
-        public DateTime BankProcessDate { get; set; }
-        public PaymentStatus Status { get; set; }
-        public string BankReference { get; set; }
+        public DateTime    BankSubmissionDate { get; init; }
+        public CardDetails CardDetails        { get; init; }
+        public string      Currency           { get; init; }
+        public double      Amount             { get; init; }
+        public int         UserId             { get; init; } // Just for some reference purpose
+        public DateTime    BankProcessDate    { get; init; }
+        public string      Status             { get; init; }
+        public string      BankReference      { get; init; }
 
         protected override void Validate()
         {

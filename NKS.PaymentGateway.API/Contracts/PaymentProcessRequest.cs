@@ -12,7 +12,7 @@
         public int ExpiryYear { get; set; }
         public int CVV { get; set; }
         public string Currency { get; set; }
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
 
     }
 }

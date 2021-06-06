@@ -5,7 +5,7 @@
 
     public interface IPaymentRepository
     {
-        void GetBy(Guid reference);
-        void Create(Payment Payment);
+        Payment GetBy(string reference);
+        void Create(Payment payment);
     }
 }

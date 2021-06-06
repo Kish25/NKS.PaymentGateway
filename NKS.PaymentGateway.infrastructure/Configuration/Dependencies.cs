@@ -15,7 +15,9 @@
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            return services.AddTransient<IPaymentRepository,PaymentRepository>();
+            return services
+                   .AddTransient<ICalendar, Calendar>()
+                   .AddTransient<IPaymentRepository, PaymentRepository>();
         }
     }
 }
