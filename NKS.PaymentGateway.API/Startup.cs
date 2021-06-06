@@ -2,13 +2,13 @@ namespace NKS.Payments.API
 {
     using Amazon.DynamoDBv2;
     using Amazon.S3;
+    using Configuration;
+    using Core.Entities;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Configuration;
-    using Core.Entities;
     using NKS.Payments.Infrastructure.Configuration;
     using Serilog;
 
@@ -21,24 +21,22 @@ namespace NKS.Payments.API
 
         private IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             Log.Information("Configuring services.");
-          //  services.Configure<Swagger>(Configuration.GetSection("SwaggerConfiguration"));
-          services.Configure<AWSConfiguration>(Configuration.GetSection("AWSConfiguration"));
-          services.Configure<CheckoutBankAPISetting>(Configuration.GetSection(nameof(CheckoutBankAPISetting)));
+            services.Configure<AWSConfiguration>(Configuration.GetSection("AWSConfiguration"));
+            services.Configure<CheckoutBankAPISetting>(Configuration.GetSection(nameof(CheckoutBankAPISetting)));
 
             Configuration.GetAWSOptions();
-          services.AddControllers(); 
-          services.AddAPIConfiguration(Configuration);
-          services.AddInfrastructure();
+
+            services.AddControllers();
+            services.AddAPIConfiguration(Configuration);
+            services.AddInfrastructure();
             //services.AddDefaultAWSOptions();
             services.AddAWSService<IAmazonS3>();
             services.AddAWSService<IAmazonDynamoDB>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             var swaggerConfig = Configuration.GetSection("SwaggerConfiguration").Get<Swagger>();

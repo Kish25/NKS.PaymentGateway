@@ -10,7 +10,7 @@
     /// </summary>
     public class PaymentProcessResponse
     {
-        public Guid GatewayReference { get; set; }
-        public string Status { get; set; }
+        public string GatewayReference { get; init; }
+        public string Status { get; init; }
     }
 }

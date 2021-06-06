@@ -1,5 +1,4 @@
-﻿
-namespace NKS.Payments.Infrastructure.APIs
+﻿namespace NKS.Payments.Infrastructure.APIs
 {
     using Core.Entities;
     using Microsoft.Extensions.Options;

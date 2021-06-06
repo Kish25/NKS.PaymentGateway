@@ -6,6 +6,5 @@
     public interface IPaymentsAPI
     {
         Task<PaymentAPIResponse> ProcessPaymentAsync(PaymentRequest request);
-
     }
 }

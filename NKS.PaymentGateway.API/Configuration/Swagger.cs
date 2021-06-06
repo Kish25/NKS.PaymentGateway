@@ -1,7 +1,7 @@
 ﻿namespace NKS.Payments.API.Configuration
 {
     /// <summary>
-    /// Swagger configuration 
+    /// Swagger Configuration 
     /// </summary>
     public class Swagger
     {

@@ -1,11 +1,9 @@
-﻿// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace NKS.Payments.API.Controllers
+﻿namespace NKS.Payments.API.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
     using Contracts;
-    using Interfaces;
     using Core.Exceptions;
+    using Interfaces;
+    using Microsoft.AspNetCore.Mvc;
     using Serilog;
     using System;
     using System.Collections.Generic;
@@ -24,6 +22,7 @@ namespace NKS.Payments.API.Controllers
             _mapper = mapper;
         }
 
+        // Define response types
         [HttpGet]
         public async Task<IEnumerable<PaymentDTO>> Get()
         {
