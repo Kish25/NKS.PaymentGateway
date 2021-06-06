@@ -7,14 +7,32 @@ namespace NKS.Payments.Infrastructure.Repositories
 
     public class PaymentRepository : IPaymentRepository
     {
-        public void Create(Payment Payment)
+        public void Create(Payment payment)
         {
-            throw new NotImplementedException();
+            if (payment == null)
+                throw new ArgumentNullException();
         }
 
-        public void GetBy(Guid reference)
+        public Payment GetBy(string reference)
         {
-            throw new NotImplementedException();
+            return new Payment()
+            {
+                Id = Guid.NewGuid(),
+                Currency = "GBP",
+                Amount = 1240.10,
+                BankProcessDate = DateTime.Now,
+                BankReference = "Fake_referene",
+                BankSubmissionDate = DateTime.Now,
+                Status = "Success",
+                UserId = 1,
+                CardDetails = new CardDetails()
+                {
+                    CardHolderName = "test",
+                    CardNumber = "4111111111111111",
+                    ExpiryMonth = 12,
+                    ExpiryYear = 2023,
+                }
+            };
         }
     }
 }

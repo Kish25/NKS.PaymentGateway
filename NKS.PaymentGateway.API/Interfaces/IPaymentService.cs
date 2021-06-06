@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NKS.Payments.Core.Entities;
-
+﻿
 namespace NKS.Payments.API.Interfaces
 {
+    using Core.Entities;
+    using System;
+    using System.Threading.Tasks;
+
     public interface IPaymentService
     {
         Task<Payment> GetBy(Guid paymentReference);

@@ -8,17 +8,48 @@
     {
         public PaymentRequest ToDomainEntity(PaymentProcessRequest request)
         {
-            return new PaymentRequest();
+            return new ()
+            {
+                Amount=request.Amount,
+                Currency=request.Currency,
+                CardDetails = new CardDetails()
+                {
+                    CardHolderName = request.CardHolderName,
+                    CardNumber =request.CardNumber,
+                    ExpiryMonth = request.ExpiryMonth,
+                    ExpiryYear = request.ExpiryYear,
+                    Cvv=request.CVV
+                }
+            };
         }
 
         public PaymentDTO ToPaymentDetailsDto(Payment payment)
         {
-            return new PaymentDTO();
+            return new PaymentDTO()
+            {
+                CardHolderName = payment.CardDetails.CardHolderName,
+                Currency = payment.Currency,
+                Amount = payment.Amount,
+                CardNumber = GetLastFourDigits(payment.CardDetails.CardNumber),
+                BankProcessDate = payment.BankProcessDate,
+                BankSubmissionDate = payment.BankSubmissionDate,
+                Status = payment.Status,
+                Reference = payment.Id.ToString()
+            };
+        }
+
+        private static string GetLastFourDigits(string number)
+        {
+            return number.Substring(number.Length-4);
         }
 
         public PaymentProcessResponse ToPaymentProcessResponse(Payment payment)
         {
-            return new PaymentProcessResponse();
+            return new PaymentProcessResponse()
+            {
+                GatewayReference=payment.Id,
+                Status = payment.Status.ToString()
+            };
         }
     }
 }

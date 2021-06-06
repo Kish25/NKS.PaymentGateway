@@ -1,21 +1,30 @@
 ﻿namespace NKS.PatmentGateway.UnitTests.Core
 {
     using System.Collections.Generic;
+    using Moq;
     using Payments.Core.Entities;
+    using Payments.Core.Interfaces;
     using Payments.Core.Services;
     using Xunit;
 
-    public class PaymentRequestsShould
+    public class PaymentRequestsValidatorShould
     {
+        private readonly IPaymentRequestValidator _paymentRequestValidator;
+
+        public PaymentRequestsValidatorShould()
+        {
+            _paymentRequestValidator = new PaymentRequestValidator();
+        }
+
         [Fact]
         public void ReturnsTrueWhenDetailsAreCorrect()
         {
             // Arrange   
-            var requestValidator = new PaymentRequestValidator();
+           
             var request = GetPaymentDetails();
 
             // Act
-            var result = requestValidator.Validate(request);
+            var result = _paymentRequestValidator.Validate(request);
             // Assert
 
             Assert.True(result,"Payment details are valid.");
@@ -25,11 +34,10 @@
         public void ReturnsFalseWhenDetailsAreNotCorrect(PaymentRequest request, bool expected)
         {
             // Arrange   
-            var requestValidator = new PaymentRequestValidator();
             //var request = GetPaymentDetails();
 
             // Act
-            var result = requestValidator.Validate(request);
+            var result = _paymentRequestValidator.Validate(request);
             
             // Assert
             Assert.False(result,"Payment information is not correct.");

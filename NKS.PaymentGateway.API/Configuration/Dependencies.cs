@@ -3,6 +3,8 @@
     using System;
     using System.IO;
     using System.Reflection;
+    using Core.Interfaces;
+    using Core.Services;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.OpenApi.Models;
@@ -40,7 +42,11 @@
                 });
                 options.EnableAnnotations();
             });
-            services.AddTransient<IPaymentService,PaymentService>();
+
+            services
+                .AddTransient<IAWSDatabaseService,AWSDatabaseService>()
+                .AddTransient<IPaymentRequestValidator, PaymentRequestValidator>()
+                .AddTransient<IPaymentService,PaymentService>();
             return services;
         }
     }
