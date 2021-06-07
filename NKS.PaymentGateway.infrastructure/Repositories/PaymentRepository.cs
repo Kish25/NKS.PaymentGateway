@@ -4,13 +4,23 @@ namespace NKS.Payments.Infrastructure.Repositories
     using Core.Entities;
     using Core.Interfaces;
     using System;
+    using Amazon;
+    using Amazon.DynamoDBv2;
 
     public class PaymentRepository : IPaymentRepository
     {
+        private readonly AmazonDynamoDBClient _dynamoDbClient;
+        public PaymentRepository()
+        {
+            var newRegion = RegionEndpoint.GetBySystemName("eu-west-2");
+
+            _dynamoDbClient = new AmazonDynamoDBClient(newRegion);
+        }
         public void Create(Payment payment)
         {
             if (payment == null)
                 throw new ArgumentNullException();
+
         }
 
         public Payment GetBy(string reference)
