@@ -21,17 +21,8 @@
         private readonly Mock<IPaymentService> _paymentService;
         private readonly Mock<IPaymentMapper> _paymentMapper;
 
-        //private readonly Mock<IPaymentRepository> _paymentRepository;
-        //private readonly Mock<IPaymentRequestValidator> _paymentRequestValidator;
-        //private readonly Mock<IPaymentsAPI> _paymentsApi;
-
         public PaymentsControllerShould()
         {
-            //_paymentRepository = new Mock<IPaymentRepository>();
-            //_paymentRequestValidator = new Mock<IPaymentRequestValidator>();
-            //_paymentsApi = new Mock<IPaymentsAPI>();
-
-            
             _paymentService = new Mock<IPaymentService>();
             _paymentMapper = new Mock<IPaymentMapper>();
             _paymentsController = new PaymentsController(_paymentService.Object,
@@ -62,10 +53,7 @@
 
             var apiResponse =  await _paymentsController.Post(request);
 
-
             apiResponse.ShouldBeOfType<OkObjectResult>();
-
-
         }
     }
 }
