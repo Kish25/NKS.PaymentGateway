@@ -18,11 +18,14 @@
         /// <param name="services"></param>
         /// <param name="config"></param>
         /// <returns>Service Collection Object</returns>
-        public static IServiceCollection AddAPIConfiguration(this IServiceCollection services,IConfiguration config)
+        public static IServiceCollection AddApiConfiguration(this IServiceCollection services,IConfiguration config)
         {
             var swaggerConfig = config.GetSection("SwaggerConfiguration").Get<Swagger>();
 
             services.AddMvcCore();
+            services.AddTransient<IPaymentMapper, PaymentMapper>()
+                    .AddTransient<IPaymentRequestValidator,PaymentRequestValidator>();
+            services.AddHttpClient<IPaymentsAPI>();
             services.AddSwaggerGen(options =>
             {
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -40,7 +43,6 @@
             });
 
             services
-                .AddTransient<IAWSDatabaseService,AWSDatabaseService>()
                 .AddTransient<IPaymentRequestValidator, PaymentRequestValidator>()
                 .AddTransient<IPaymentService,PaymentService>();
             return services;

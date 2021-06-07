@@ -1,5 +1,6 @@
 ﻿namespace NKS.Payments.Infrastructure.APIs
 {
+    using System;
     using Core.Entities;
     using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
@@ -14,8 +15,8 @@
         private readonly HttpClient _client;
         private readonly ICalendar _calendar;
 
-        public PaymentsApi(IOptions<CheckoutBankAPISetting> apiConfiguration, 
-                           IFakeResultProvider fakeResultProvider, 
+        public PaymentsApi(IOptions<CheckoutBankAPISetting> apiConfiguration,
+                           IFakeResultProvider fakeResultProvider,
                            HttpClient client, ICalendar calendar)
         {
             _apiConfiguration = apiConfiguration;
@@ -28,6 +29,10 @@
         {
             if (!_apiConfiguration.Value.MakeRealApiCall)
                 return _fakeResultProvider.ReturnSuccessResultAsync();
+
+            if (string.IsNullOrEmpty(_apiConfiguration.Value.BaseUri) ||
+                string.IsNullOrWhiteSpace(_apiConfiguration.Value.BaseUri))
+                throw new UriFormatException("");
 
             HttpResponseMessage response = ExecuteRequest(request);
             var responseContent = await response.Content.ReadAsStringAsync();

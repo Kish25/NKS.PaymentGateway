@@ -6,7 +6,7 @@
 
     public interface IPaymentService
     {
-        Task<Payment> GetBy(Guid paymentReference);
+        Task<Payment> GetBy(string paymentReference);
         Task<Payment> ProcessAsync(PaymentRequest paymentRequest);
     }
 }

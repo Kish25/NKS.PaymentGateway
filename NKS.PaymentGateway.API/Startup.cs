@@ -30,7 +30,7 @@ namespace NKS.Payments.API
             Configuration.GetAWSOptions();
 
             services.AddControllers();
-            services.AddAPIConfiguration(Configuration);
+            services.AddApiConfiguration(Configuration);
             services.AddInfrastructure();
             //services.AddDefaultAWSOptions();
             services.AddAWSService<IAmazonS3>();

@@ -30,7 +30,7 @@
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<IActionResult> Get(string id)
         {
             Log.Logger.Information($"Get Payment for reference {id}");
             var gatewayResponse = await _paymentService.GetBy(id);
@@ -44,6 +44,7 @@
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(PaymentProcessResponse), 200)]
         public async Task<IActionResult> Post([FromBody] PaymentProcessRequest request)
         {
             Log.Logger.Information($"Process Payment ");
