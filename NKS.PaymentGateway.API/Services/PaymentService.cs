@@ -27,10 +27,10 @@
             _paymentsApi = paymentsApi;
         }
 
-        public async Task<Payment> GetBy(Guid paymentReference)
+        public async Task<Payment> GetBy(string paymentReference)
         {
 
-            return new Payment(Guid.NewGuid());
+            return _paymentRepository.GetBy(paymentReference);
         }
 
         public async Task<Payment> ProcessAsync(PaymentRequest request)

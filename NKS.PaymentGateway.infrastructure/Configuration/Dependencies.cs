@@ -17,6 +17,7 @@
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             return services
+                   .AddTransient<IFakeResultProvider, FakeResultProvider>()
                    .AddTransient<IPaymentsAPI, PaymentsApi>()
                    .AddTransient<ICalendar, Calendar>()
                    .AddTransient<IPaymentRepository, PaymentRepository>();

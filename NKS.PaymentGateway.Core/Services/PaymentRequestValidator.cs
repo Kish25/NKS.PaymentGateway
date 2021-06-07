@@ -19,7 +19,6 @@
                  string.IsNullOrWhiteSpace(payment.Currency)))
                 return false;
 
-
             if (string.IsNullOrEmpty(payment.CardDetails.CardHolderName) ||
                 string.IsNullOrWhiteSpace(payment.CardDetails.CardHolderName))
                 return false;
