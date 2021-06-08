@@ -1,4 +1,4 @@
-﻿
+﻿// https: //docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html#creds-locate
 namespace NKS.Payments.Infrastructure.Repositories
 {
     using Core.Entities;
@@ -6,15 +6,26 @@ namespace NKS.Payments.Infrastructure.Repositories
     using System;
     using Amazon;
     using Amazon.DynamoDBv2;
+    using Amazon.Runtime;
+    using Amazon.Runtime.CredentialManagement;
 
     public class PaymentRepository : IPaymentRepository
     {
         private readonly AmazonDynamoDBClient _dynamoDbClient;
-        public PaymentRepository()
+        private readonly IAmazonDynamoDB _dynamoDb;
+        public PaymentRepository(IAmazonDynamoDB dynamoDb)
         {
+            _dynamoDb = dynamoDb;
             var newRegion = RegionEndpoint.GetBySystemName("eu-west-2");
+            var chain = new CredentialProfileStoreChain();
+            AWSCredentials awsCredentials;
+            if (chain.TryGetAWSCredentials("basic_profile", out awsCredentials))
+            {
+                // use awsCredentials
+            }
+            _dynamoDbClient = new AmazonDynamoDBClient(awsCredentials);
 
-            _dynamoDbClient = new AmazonDynamoDBClient(newRegion);
+            
         }
         public void Create(Payment payment)
         {

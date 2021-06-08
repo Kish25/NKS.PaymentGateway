@@ -1,9 +1,6 @@
-﻿namespace NKS.Payments.API.Services
+﻿//Reference: https: //dejanstojanovic.net/aspnet/2020/july/basic-authentication-with-swagger-and-aspnet-core/
+namespace NKS.Payments.API.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Interfaces;
 
     public class UserService: IUserService

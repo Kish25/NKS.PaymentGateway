@@ -4,6 +4,8 @@ namespace NKS.Payments.API
     using Amazon.S3;
     using Configuration;
     using Core.Entities;
+    using Handlers;
+    using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -24,6 +26,9 @@ namespace NKS.Payments.API
         public void ConfigureServices(IServiceCollection services)
         {
             Log.Information("Configuring services.");
+            services.AddAuthentication("BasicAuthentication")
+                    .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
             services.Configure<AWSConfiguration>(Configuration.GetSection("AWSConfiguration"));
             services.Configure<CheckoutBankAPISetting>(Configuration.GetSection(nameof(CheckoutBankAPISetting)));
 
@@ -53,7 +58,7 @@ namespace NKS.Payments.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
