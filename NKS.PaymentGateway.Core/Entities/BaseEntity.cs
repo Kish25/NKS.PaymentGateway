@@ -15,7 +15,7 @@
         {
 
         }
-        public Guid Id { get; set; }
+        public Guid Id { get; init; }
 
         protected virtual object Actual => this;
         public ObjectState State { get; set; }

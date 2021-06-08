@@ -4,6 +4,6 @@
 
     public interface IFakeResultProvider
     {
-        PaymentAPIResponse ReturnSuccessResultAsync();
+        PaymentApiResponse ReturnSuccessResultAsync();
     }
 }

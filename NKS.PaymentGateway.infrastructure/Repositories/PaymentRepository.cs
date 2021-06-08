@@ -1,4 +1,4 @@
-﻿// https: //docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html#creds-locate
+﻿// https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html#creds-locate
 namespace NKS.Payments.Infrastructure.Repositories
 {
     using Core.Entities;

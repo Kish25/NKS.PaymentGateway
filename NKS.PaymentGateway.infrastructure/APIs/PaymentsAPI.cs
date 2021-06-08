@@ -8,14 +8,14 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class PaymentsApi : Core.Interfaces.IPaymentsAPI
+    public class PaymentsApi : Core.Interfaces.IPaymentsApi
     {
-        private readonly IOptions<CheckoutBankAPISetting> _apiConfiguration;
+        private readonly IOptions<CheckoutBankApiSetting> _apiConfiguration;
         private readonly IFakeResultProvider _fakeResultProvider;
         private readonly HttpClient _client;
         private readonly ICalendar _calendar;
 
-        public PaymentsApi(IOptions<CheckoutBankAPISetting> apiConfiguration,
+        public PaymentsApi(IOptions<CheckoutBankApiSetting> apiConfiguration,
                            IFakeResultProvider fakeResultProvider,
                            HttpClient client, ICalendar calendar)
         {
@@ -25,7 +25,7 @@
             _calendar = calendar;
         }
 
-        public async Task<PaymentAPIResponse> ProcessPaymentAsync(PaymentRequest request)
+        public async Task<PaymentApiResponse> ProcessPaymentAsync(PaymentRequest request)
         {
             if (!_apiConfiguration.Value.MakeRealApiCall)
                 return _fakeResultProvider.ReturnSuccessResultAsync();
@@ -36,7 +36,7 @@
 
             HttpResponseMessage response = ExecuteRequest(request);
             var responseContent = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<PaymentAPIResponse>(responseContent);
+            var result = JsonConvert.DeserializeObject<PaymentApiResponse>(responseContent);
             result.ProcessedDate = _calendar.UtcDateTimeNow();
 
             return result;

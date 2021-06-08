@@ -1,7 +1,6 @@
 ﻿namespace NKS.Payments.API.Interfaces
 {
     using Core.Entities;
-    using System;
     using System.Threading.Tasks;
 
     public interface IPaymentService

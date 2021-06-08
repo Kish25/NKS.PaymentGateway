@@ -1,17 +1,16 @@
 ﻿namespace NKS.Payments.API.Handlers
 {
+    using Interfaces;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.Options;
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http.Headers;
     using System.Security.Claims;
     using System.Text;
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Authentication;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Options;
-    using NKS.Payments.API.Interfaces;
 
     public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
@@ -33,9 +32,10 @@
             try
             {
                 var authHeader = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
-                var credentials = Encoding.UTF8.GetString(Convert.FromBase64String(authHeader.Parameter)).Split(':');
-                username = credentials.FirstOrDefault();
-                var password = credentials.LastOrDefault();
+                var credentials = Encoding.UTF8.GetString(Convert.FromBase64String(authHeader.Parameter ?? string.Empty)).Split(':');
+                username = credentials.FirstOrDefault() ?? string.Empty;
+                var password = credentials.LastOrDefault() ?? string.Empty;
+
 
                 if (!_userService.ValidateCredentials(username, password))
                     throw new ArgumentException("Invalid credentials");

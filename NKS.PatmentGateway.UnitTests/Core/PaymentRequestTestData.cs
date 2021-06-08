@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NKS.PatmentGateway.UnitTests.Core
+﻿namespace NKS.PatmentGateway.UnitTests.Core
 {
-    using System.Collections;
+    using System.Collections.Generic;
     using Payments.Core.Entities;
+    using System.Collections;
 
     public class PaymentRequestTestData : IEnumerable<object[]>
     {

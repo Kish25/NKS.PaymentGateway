@@ -1,7 +1,5 @@
 ﻿namespace NKS.Payments.API.Contracts
 {
-    using System;
-
     /// <summary>
     /// Response after processing payment request
     /// Status is either Success or Fail and reference for internal storage of payment.

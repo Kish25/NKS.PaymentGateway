@@ -3,8 +3,8 @@
     using System.Threading.Tasks;
     using Entities;
 
-    public interface IPaymentsAPI
+    public interface IPaymentsApi
     {
-        Task<PaymentAPIResponse> ProcessPaymentAsync(PaymentRequest request);
+        Task<PaymentApiResponse> ProcessPaymentAsync(PaymentRequest request);
     }
 }

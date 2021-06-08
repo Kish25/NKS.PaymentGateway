@@ -1,13 +1,13 @@
 ﻿namespace NKS.Payments.Core.Entities
 {
-    public class AWSConfiguration
+    public class AwsConfiguration
     {
         public string RegionEndPoint { get; set; }
         public string TableName { get; set; }
         public string AccessKey { get; set; }
-        public AWSUser User { get; set; }
+        public AwsUser User { get; set; }
     }
-    public class AWSUser
+    public class AwsUser
     {
         public string Name      { get; set; }
         public string AccessId  { get; set; }

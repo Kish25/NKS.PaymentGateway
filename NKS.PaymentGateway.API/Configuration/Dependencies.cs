@@ -30,7 +30,7 @@
                     .AddTransient<IPaymentService, PaymentService>()
                     .AddScoped<IUserService, UserService>();
 
-            services.AddHttpClient<IPaymentsAPI>();
+            services.AddHttpClient<IPaymentsApi>();
 
             services.AddSwaggerGen(options =>
             {

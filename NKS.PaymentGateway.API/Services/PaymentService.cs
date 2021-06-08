@@ -1,13 +1,11 @@
 ﻿namespace NKS.Payments.API.Services
 {
-    using System;
-    using System.Threading.Tasks;
-    using Interfaces;
     using Core.Entities;
     using Core.Exceptions;
-    using Infrastructure;
+    using Interfaces;
     using NKS.Payments.Core.Interfaces;
-    using Serilog;
+    using System;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Domain service to validate payment details and process.
@@ -16,11 +14,11 @@
     {
         private readonly IPaymentRepository _paymentRepository;
         private readonly IPaymentRequestValidator _paymentRequestValidator;
-        private readonly IPaymentsAPI _paymentsApi;
+        private readonly IPaymentsApi _paymentsApi;
 
         public PaymentService(IPaymentRequestValidator paymentRequestValidator,
                               IPaymentRepository paymentRepository,
-                              IPaymentsAPI paymentsApi)
+                              IPaymentsApi paymentsApi)
         {
             _paymentRequestValidator = paymentRequestValidator;
             _paymentRepository = paymentRepository;
@@ -49,7 +47,7 @@
             return processedPayment;
         }
 
-        private Payment GetPaymentDetails(PaymentRequest request, PaymentAPIResponse apiResponse)
+        private Payment GetPaymentDetails(PaymentRequest request, PaymentApiResponse apiResponse)
         {
             
             return new Payment()

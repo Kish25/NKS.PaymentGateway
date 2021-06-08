@@ -5,8 +5,8 @@
     using Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using Serilog;
-    using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     [Route("[controller]")]
@@ -24,9 +24,9 @@
 
         // Define response types
         [HttpGet]
-        public async Task<IEnumerable<PaymentDTO>> Get()
+        public async Task<IEnumerable<PaymentDto>> Get()
         {
-            return new List<PaymentDTO>();
+            return new List<PaymentDto>();
         }
 
         [HttpGet("{id}")]
@@ -45,6 +45,8 @@
 
         [HttpPost]
         [ProducesResponseType(typeof(PaymentProcessResponse), 200)]
+        [ProducesResponseType(typeof(string), 400)]
+
         public async Task<IActionResult> Post([FromBody] PaymentProcessRequest request)
         {
             Log.Logger.Information($"Process Payment ");

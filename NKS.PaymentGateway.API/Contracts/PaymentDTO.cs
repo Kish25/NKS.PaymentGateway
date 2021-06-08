@@ -1,12 +1,11 @@
 ﻿namespace NKS.Payments.API.Contracts
 {
     using System;
-    using Core;
 
     /// <summary>
     /// DTO object to return on get request to caller.
     /// </summary>
-    public class PaymentDTO
+    public class PaymentDto
     {
         public string CardHolderName { get; init; }
         public string CardNumber { get; init; } // should we return last 4 digit of card?

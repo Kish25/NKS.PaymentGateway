@@ -9,7 +9,6 @@
     /// Extension method to register dependencies local to project
     /// and out of startup class to leave it clean.
     /// </summary>
-    /// <param name="services"></param>
     /// <returns>Service Collection Object</returns>
 
     public static class Dependencies
@@ -18,7 +17,7 @@
         {
             return services
                    .AddTransient<IFakeResultProvider, FakeResultProvider>()
-                   .AddTransient<IPaymentsAPI, PaymentsApi>()
+                   .AddTransient<IPaymentsApi, PaymentsApi>()
                    .AddTransient<ICalendar, Calendar>()
                    .AddTransient<IPaymentRepository, PaymentRepository>();
         }

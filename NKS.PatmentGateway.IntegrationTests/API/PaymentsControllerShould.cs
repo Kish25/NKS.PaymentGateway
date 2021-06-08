@@ -1,18 +1,14 @@
 ﻿namespace NKS.PatmentGateway.IntegrationTests.API
 {
-    using System.Net;
-    using Payments.API;
-    using Payments.API.Contracts;
-    using Payments.API.Controllers;
-    using System.Threading.Tasks;
+    using System;
     using Microsoft.AspNetCore.Mvc;
     using Moq;
+    using Payments.API.Contracts;
+    using Payments.API.Controllers;
     using Payments.API.Interfaces;
     using Payments.Core.Entities;
-    using Payments.Core.Interfaces;
-    using Payments.Core.Services;
-    using Payments.Infrastructure.Repositories;
     using Shouldly;
+    using System.Threading.Tasks;
     using Xunit;
 
     public class PaymentsControllerShould
@@ -42,18 +38,52 @@
                 ExpiryYear = 2023,
                 Cvv = 123
             };
-
+            var requestModel = new PaymentRequest()
+            {
+                Amount = request.Amount,
+                Currency = request.Currency,
+                CardDetails = new CardDetails()
+                {
+                    CardHolderName = request.CardHolderName,
+                    CardNumber = request.CardNumber,
+                    ExpiryMonth = request.ExpiryMonth,
+                    ExpiryYear = request.ExpiryYear,
+                    Cvv = request.Cvv
+                }
+            };
+            var expectedPayment= new Payment()
+            {
+                Id = Guid.NewGuid(),
+                Currency = request.Currency,
+                Amount = request.Amount,
+                BankProcessDate = DateTime.Now,
+                BankReference = "Fake",
+                Status = "Success",
+                UserId = 1,
+                CardDetails = new CardDetails()
+                {
+                    CardHolderName = request.CardHolderName,
+                    CardNumber = request.CardNumber,
+                    ExpiryMonth = request.ExpiryMonth,
+                    ExpiryYear = request.ExpiryYear,
+                }
+            };
             var expectedResponse = new PaymentProcessResponse()
             {
                 GatewayReference = "Fake_Reference",
                 Status = "Success"
             };
 
-            _paymentService.Setup(service => service.ProcessAsync(new PaymentRequest())).ReturnsAsync(new Payment());
+            _paymentMapper.Setup(p => p.ToDomainEntity(request)).Returns(requestModel);
+
+            _paymentService.Setup(service => service.ProcessAsync(requestModel)).ReturnsAsync(
+             expectedPayment);
 
             var apiResponse =  await _paymentsController.Post(request);
+            var resp = (PaymentProcessResponse) ((OkObjectResult) apiResponse).Value;
 
             apiResponse.ShouldBeOfType<OkObjectResult>();
+        //    resp.ShouldBeEquivalentTo(expectedResponse);  // checking of return value.
         }
     }
 }

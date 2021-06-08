@@ -6,19 +6,19 @@
 
     public class FakeResultProvider: IFakeResultProvider
     {
-        private readonly IOptions<CheckoutBankAPISetting> _apiConfiguration;
+        private readonly IOptions<CheckoutBankApiSetting> _apiConfiguration;
 
-        public FakeResultProvider(IOptions<CheckoutBankAPISetting> apiConfiguration)
+        public FakeResultProvider(IOptions<CheckoutBankApiSetting> apiConfiguration)
         {
             _apiConfiguration = apiConfiguration;
         }
 
-        public PaymentAPIResponse ReturnSuccessResultAsync()
+        public PaymentApiResponse ReturnSuccessResultAsync()
         {
             if (_apiConfiguration.Value.MakeRealApiCall)
                 return null;
 
-            return new PaymentAPIResponse
+            return new PaymentApiResponse
             {
                 Reference = "P1Abx12aB1",
                 Status = "Success",

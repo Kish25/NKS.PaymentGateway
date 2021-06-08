@@ -8,10 +8,6 @@
 
     public class PaymentRequestValidator : IPaymentRequestValidator
     {
-        public PaymentRequestValidator()
-        {
-                
-        }
         public bool Validate(PaymentRequest payment)
         {
             if (payment.Amount == 0 ||

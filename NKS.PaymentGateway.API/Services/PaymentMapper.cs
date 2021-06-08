@@ -23,9 +23,9 @@
             };
         }
 
-        public PaymentDTO ToPaymentDetailsDto(Payment payment)
+        public PaymentDto ToPaymentDetailsDto(Payment payment)
         {
-            return new PaymentDTO()
+            return new PaymentDto()
             {
                 CardHolderName = payment.CardDetails.CardHolderName,
                 Currency = payment.Currency,
@@ -48,7 +48,7 @@
             return new PaymentProcessResponse()
             {
                 GatewayReference=payment.Id.ToString(),
-                Status = payment.Status.ToString()
+                Status = payment.Status
             };
         }
     }

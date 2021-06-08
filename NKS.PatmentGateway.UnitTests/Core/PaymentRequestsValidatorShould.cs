@@ -1,7 +1,5 @@
 ﻿namespace NKS.PatmentGateway.UnitTests.Core
 {
-    using System.Collections.Generic;
-    using Moq;
     using Payments.Core.Entities;
     using Payments.Core.Interfaces;
     using Payments.Core.Services;

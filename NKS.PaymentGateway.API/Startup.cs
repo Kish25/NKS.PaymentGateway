@@ -29,8 +29,8 @@ namespace NKS.Payments.API
             services.AddAuthentication("BasicAuthentication")
                     .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
-            services.Configure<AWSConfiguration>(Configuration.GetSection("AWSConfiguration"));
-            services.Configure<CheckoutBankAPISetting>(Configuration.GetSection(nameof(CheckoutBankAPISetting)));
+            services.Configure<AwsConfiguration>(Configuration.GetSection("AWSConfiguration"));
+            services.Configure<CheckoutBankApiSetting>(Configuration.GetSection(nameof(CheckoutBankApiSetting)));
 
             Configuration.GetAWSOptions();
 

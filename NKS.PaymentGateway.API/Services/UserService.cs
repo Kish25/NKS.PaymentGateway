@@ -7,6 +7,7 @@ namespace NKS.Payments.API.Services
     {
         public bool ValidateCredentials(string username, string password)
         {
+            // validate for null argument
             return true;
             // return username.Equals("me") && password.Equals("Pa$$WoRd");
         }
